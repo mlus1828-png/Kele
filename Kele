@@ -1,0 +1,715 @@
+local P=game:GetService("Players")local L=P.LocalPlayer local R=game:GetService("RunService")local T=game:GetService("TweenService")
+local UIS=game:GetService("UserInputService")local SG=game:GetService("StarterGui")
+local EXP=172800 local ST=os.time() local ADM="@RAPZMOD (Telegram)"
+
+local S=Instance.new("ScreenGui")S.Name="R"S.ResetOnSpawn=false S.IgnoreGuiInset=true pcall(function()S.Parent=game:GetService("CoreGui")end)if not S.Parent then S.Parent=L:WaitForChild("PlayerGui")end
+
+local F=Instance.new("Frame",S)
+F.Size=UDim2.new(0,480,0,380)
+F.Position=UDim2.new(0.5,-240,0.5,-190)
+F.BackgroundColor3=Color3.fromRGB(10,12,20)
+F.BackgroundTransparency=0.03
+F.BorderSizePixel=0 F.Active=true F.Draggable=true F.Visible=false
+F.ClipsDescendants=true
+local C=Instance.new("UICorner",F)C.CornerRadius=UDim.new(0,16)
+local St=Instance.new("UIStroke",F)St.Color=Color3.fromRGB(0,200,255)St.Thickness=1.5 St.Transparency=0.4
+local Fbg=Instance.new("UIGradient",F)Fbg.Color=ColorSequence.new(Color3.fromRGB(14,18,30),Color3.fromRGB(8,10,16))Fbg.Rotation=135
+
+local topLine=Instance.new("Frame",F)
+topLine.Size=UDim2.new(1,0,0,2)topLine.BackgroundColor3=Color3.fromRGB(0,255,255)topLine.BorderSizePixel=0 topLine.ZIndex=5
+local tlG=Instance.new("UIGradient",topLine)
+tlG.Color=ColorSequence.new{ColorSequenceKeypoint.new(0,Color3.fromRGB(0,255,255)),ColorSequenceKeypoint.new(0.5,Color3.fromRGB(120,0,255)),ColorSequenceKeypoint.new(1,Color3.fromRGB(0,255,180))}
+task.spawn(function()while true do for i=0,1,0.02 do pcall(function()tlG.Offset=Vector2.new(i,0)end)task.wait(0.03)end end end)
+
+local H=Instance.new("Frame",F)H.Size=UDim2.new(1,0,0,74)H.BackgroundColor3=Color3.fromRGB(13,17,28)H.BorderSizePixel=0
+local CH=Instance.new("UICorner",H)CH.CornerRadius=UDim.new(0,16)
+local HG=Instance.new("UIGradient",H)HG.Color=ColorSequence.new(Color3.fromRGB(0,90,200),Color3.fromRGB(60,0,120))HG.Rotation=90
+
+local LogoWrap=Instance.new("Frame",H)LogoWrap.Size=UDim2.new(0,50,0,50)LogoWrap.Position=UDim2.new(0,14,0,12)LogoWrap.BackgroundColor3=Color3.fromRGB(0,150,255)LogoWrap.BorderSizePixel=0
+local LWc=Instance.new("UICorner",LogoWrap)LWc.CornerRadius=UDim.new(0,12)
+local LWg=Instance.new("UIGradient",LogoWrap)LWg.Color=ColorSequence.new(Color3.fromRGB(0,255,255),Color3.fromRGB(120,0,255))LWg.Rotation=45
+local LWS=Instance.new("UIStroke",LogoWrap)LWS.Color=Color3.fromRGB(0,255,255)LWS.Thickness=1.5 LWS.Transparency=0.3
+local Lg=Instance.new("TextLabel",LogoWrap)Lg.Size=UDim2.new(1,0,1,0)Lg.BackgroundTransparency=1 Lg.Text="R"Lg.TextColor3=Color3.fromRGB(255,255,255)Lg.Font=Enum.Font.GothamBlack Lg.TextSize=28
+
+local Tl=Instance.new("TextLabel",H)Tl.Size=UDim2.new(1,-160,0,28)Tl.Position=UDim2.new(0,74,0,10)Tl.BackgroundTransparency=1 Tl.Text="RAPZ MOD MENU"Tl.TextColor3=Color3.fromRGB(255,255,255)Tl.Font=Enum.Font.GothamBlack Tl.TextSize=20 Tl.TextXAlignment=Enum.TextXAlignment.Left
+local TlG=Instance.new("UIGradient",Tl)TlG.Color=ColorSequence.new(Color3.fromRGB(0,255,255),Color3.fromRGB(180,120,255))TlG.Rotation=90
+
+local DI=Instance.new("TextLabel",H)DI.Size=UDim2.new(1,-160,0,15)DI.Position=UDim2.new(0,74,0,38)DI.BackgroundTransparency=1 DI.Text="v1 OVULASI SEMUT | SURVIVAL | "..ADM DI.TextColor3=Color3.fromRGB(0,220,255)DI.Font=Enum.Font.GothamMedium DI.TextSize=11 DI.TextXAlignment=Enum.TextXAlignment.Left
+
+local pill=Instance.new("Frame",H)pill.Size=UDim2.new(0,70,0,22)pill.Position=UDim2.new(1,-115,0,26)pill.BackgroundColor3=Color3.fromRGB(0,80,60)pill.BorderSizePixel=0
+local pillC=Instance.new("UICorner",pill)pillC.CornerRadius=UDim.new(1,0)
+local pillS=Instance.new("UIStroke",pill)pillS.Color=Color3.fromRGB(0,255,150)pillS.Thickness=1
+local pillDot=Instance.new("Frame",pill)pillDot.Size=UDim2.new(0,6,0,6)pillDot.Position=UDim2.new(0,8,0.5,-3)pillDot.BackgroundColor3=Color3.fromRGB(0,255,150)pillDot.BorderSizePixel=0
+local pdC=Instance.new("UICorner",pillDot)pdC.CornerRadius=UDim.new(1,0)
+local pillT=Instance.new("TextLabel",pill)pillT.Size=UDim2.new(1,-20,1,0)pillT.Position=UDim2.new(0,18,0,0)pillT.BackgroundTransparency=1 pillT.Text="LOADED"pillT.TextColor3=Color3.fromRGB(0,255,150)pillT.Font=Enum.Font.GothamBold pillT.TextSize=9 pillT.TextXAlignment=Enum.TextXAlignment.Left
+
+local M=Instance.new("TextButton",H)M.Size=UDim2.new(0,30,0,30)M.Position=UDim2.new(1,-40,0,22)M.BackgroundColor3=Color3.fromRGB(255,60,60)M.BackgroundTransparency=0.6 M.Text="x"M.TextColor3=Color3.fromRGB(255,255,255)M.Font=Enum.Font.GothamBold M.TextSize=16 M.AutoButtonColor=false
+local Mc=Instance.new("UICorner",M)Mc.CornerRadius=UDim.new(0,8)
+
+local SB=Instance.new("Frame",F)SB.Size=UDim2.new(1,-24,0,34)SB.Position=UDim2.new(0,12,0,82)SB.BackgroundColor3=Color3.fromRGB(16,22,34)SB.BorderSizePixel=0
+local SBc=Instance.new("UICorner",SB)SBc.CornerRadius=UDim.new(0,10)
+local SBs=Instance.new("UIStroke",SB)SBs.Color=Color3.fromRGB(0,150,255)SBs.Thickness=1 SBs.Transparency=0.7
+local SBi=Instance.new("TextBox",SB)SBi.Size=UDim2.new(1,-20,1,0)SBi.Position=UDim2.new(0,10,0,0)SBi.BackgroundTransparency=1 SBi.PlaceholderText="Cari fitur..."SBi.PlaceholderColor3=Color3.fromRGB(90,120,160)SBi.TextColor3=Color3.fromRGB(200,240,255)SBi.Font=Enum.Font.Gotham SBi.TextSize=13 SBi.TextXAlignment=Enum.TextXAlignment.Left SBi.ClearTextOnFocus=false
+
+local catBar=Instance.new("Frame",F)catBar.Size=UDim2.new(1,-24,0,30)catBar.Position=UDim2.new(0,12,0,122)catBar.BackgroundTransparency=1
+local catLayout=Instance.new("UIListLayout",catBar)catLayout.FillDirection=Enum.FillDirection.Horizontal catLayout.Padding=UDim.new(0,4)catLayout.SortOrder=Enum.SortOrder.LayoutOrder
+
+local Sc=Instance.new("ScrollingFrame",F)Sc.Size=UDim2.new(1,-24,1,-200)Sc.Position=UDim2.new(0,12,0,158)Sc.BackgroundTransparency=1 Sc.ScrollBarThickness=3 Sc.ScrollBarImageColor3=Color3.fromRGB(0,200,255)Sc.CanvasSize=UDim2.new(0,0,0,0)Sc.BorderSizePixel=0 Sc.ScrollingDirection=Enum.ScrollingDirection.Y Sc.ElasticBehavior=Enum.ElasticBehavior.WhenScrollable
+
+local foot=Instance.new("Frame",F)foot.Size=UDim2.new(1,0,0,22)foot.Position=UDim2.new(0,0,1,-22)foot.BackgroundColor3=Color3.fromRGB(12,16,26)foot.BorderSizePixel=0
+local footC=Instance.new("UICorner",foot)footC.CornerRadius=UDim.new(0,12)
+local footT=Instance.new("TextLabel",foot)footT.Size=UDim2.new(1,-20,1,0)footT.Position=UDim2.new(0,12,0,0)footT.BackgroundTransparency=1 footT.Text="RAPZ MOD MENU | OVULASI SEMUT"footT.TextColor3=Color3.fromRGB(80,120,160)footT.Font=Enum.Font.GothamMedium footT.TextSize=10 footT.TextXAlignment=Enum.TextXAlignment.Left
+
+local Fl=Instance.new("TextButton",S)Fl.Size=UDim2.new(0,56,0,56)Fl.Position=UDim2.new(0.05,0,0.4,0)Fl.BackgroundColor3=Color3.fromRGB(0,120,220)Fl.Text="R"Fl.TextColor3=Color3.fromRGB(255,255,255)Fl.TextSize=26 Fl.Font=Enum.Font.GothamBlack Fl.Active=true Fl.Draggable=true Fl.AutoButtonColor=false
+local FC=Instance.new("UICorner",Fl)FC.CornerRadius=UDim.new(1,0)
+local FlG=Instance.new("UIGradient",Fl)FlG.Color=ColorSequence.new(Color3.fromRGB(0,255,255),Color3.fromRGB(120,0,255))FlG.Rotation=45
+local FSt=Instance.new("UIStroke",Fl)FSt.Color=Color3.fromRGB(0,255,255)FSt.Thickness=2 FSt.Transparency=0.2
+task.spawn(function()while true do pcall(function()
+    T:Create(FSt,TweenInfo.new(0.9,Enum.EasingStyle.Sine),{Transparency=0.9}):Play()task.wait(0.9)
+    T:Create(FSt,TweenInfo.new(0.9,Enum.EasingStyle.Sine),{Transparency=0.2}):Play()task.wait(0.9)
+end)end end)
+
+-- ==== STATE ====
+local buttons={}
+local cats={}
+local currentCat="ALL"
+local s={
+    musuhESP=false, musuhAlert=false, musuhFreeze=false, musuhArrow=false,
+    makananESP=false, sarangESP=false,
+    resourceTracker=false, dangerZone=false,
+    noclip=false, speedHack=false,
+    godMode=false, infiniteResource=false,
+    autoProximity=false
+}
+
+local Camera=workspace.CurrentCamera
+local function W2S(pos)local sp,on=Camera:WorldToViewportPoint(pos)return Vector2.new(sp.X,sp.Y),on end
+local function notify(t,x)SG:SetCore("SendNotification",{Title=t,Text=x,Duration=2})end
+
+-- ==== HELPER: CARI MUSUH ====
+local MUSUH_KEYWORDS={"enemy","musuh","predator","spider","laba","centipede","beetle","kumbang","wasp","tawon","boss","threat","danger"}
+local function FindMusuh()
+    local results={}
+    for _,obj in ipairs(workspace:GetDescendants())do
+        if obj:IsA("Model")then
+            local n=obj.Name:lower()
+            for _,kw in ipairs(MUSUH_KEYWORDS)do
+                if n:find(kw)then
+                    local hrp=obj:FindFirstChild("HumanoidRootPart")or obj:FindFirstChild("HRP")or obj.PrimaryPart
+                    local hum=obj:FindFirstChildOfClass("Humanoid")
+                    if hrp then table.insert(results,{model=obj,hrp=hrp,hum=hum})break end
+                end
+            end
+        end
+    end
+    return results
+end
+
+-- ==== HELPER: CARI MAKANAN ====
+local MAKANAN_KEYWORDS={"food","makanan","sugar","gula","crumb","roti","meat","daging","fruit","buah","seed","biji","leaf","daun","honey","madu","resource","collect","item","pickup"}
+local function FindMakanan()
+    local results={}
+    for _,obj in ipairs(workspace:GetDescendants())do
+        if obj:IsA("BasePart")or obj:IsA("Model")then
+            local n=obj.Name:lower()
+            for _,kw in ipairs(MAKANAN_KEYWORDS)do
+                if n:find(kw)then table.insert(results,obj)break end
+            end
+        end
+    end
+    return results
+end
+
+-- ==== HELPER: CARI SARANG ====
+local SARANG_KEYWORDS={"nest","sarang","base","hive","colony","koloni","home","spawn","queen","ratu","hill","anthill"}
+local function FindSarang()
+    local results={}
+    for _,obj in ipairs(workspace:GetDescendants())do
+        if obj:IsA("BasePart")or obj:IsA("Model")then
+            local n=obj.Name:lower()
+            for _,kw in ipairs(SARANG_KEYWORDS)do
+                if n:find(kw)then table.insert(results,obj)break end
+            end
+        end
+    end
+    return results
+end
+
+-- ==== DRAWING POOL ====
+local musuhESPDrawings={}
+local makananESPDrawings={}
+local sarangESPDrawings={}
+
+local function GetOrCreate(pool,key,dtype)
+    if not pool[key]then pool[key]=Drawing.new(dtype)end
+    return pool[key]
+end
+local function HideAll(pool)
+    for _,d in pairs(pool)do
+        if type(d)=="table"then for _,v in pairs(d)do pcall(function()v.Visible=false end)end
+        else pcall(function()d.Visible=false end)end
+    end
+end
+
+-- ==== MUSUH ESP ====
+local function UpdateMusuhESP()
+    HideAll(musuhESPDrawings)
+    if not s.musuhESP then return end
+    local list=FindMusuh()
+    for i,o in ipairs(list)do
+        local pos=o.hrp.Position
+        local sp,on=W2S(pos)
+        if not on then continue end
+        local top=W2S(pos+Vector3.new(0,3,0))
+        local bot=W2S(pos-Vector3.new(0,3,0))
+        local hgt=math.abs((top.Y or sp.Y-30)-(bot.Y or sp.Y+30))
+        local wdt=hgt*0.5
+        local k="musuh_"..i
+        local box=GetOrCreate(musuhESPDrawings,k.."_box","Square")
+        box.Size=Vector2.new(wdt,hgt)
+        box.Position=Vector2.new(sp.X-wdt/2,sp.Y-hgt/2)
+        box.Color=Color3.fromRGB(255,60,0)
+        box.Thickness=2 box.Filled=false box.Visible=true
+        local lbl=GetOrCreate(musuhESPDrawings,k.."_lbl","Text")
+        local dist=math.floor((pos-Camera.CFrame.Position).Magnitude)
+        local hp=""
+        if o.hum then hp=" | HP:"..math.floor(o.hum.Health)end
+        lbl.Text="["..o.model.Name.."] "..dist.."m"..hp
+        lbl.Size=15 lbl.Center=true lbl.Outline=true
+        lbl.Color=Color3.fromRGB(255,100,50)
+        lbl.Position=Vector2.new(sp.X,sp.Y-hgt/2-20)
+        lbl.Visible=true
+    end
+end
+
+-- ==== MUSUH ALERT ====
+local alertTxt=Drawing.new("Text")alertTxt.Size=28 alertTxt.Center=true alertTxt.Outline=true alertTxt.Color=Color3.fromRGB(255,0,0)alertTxt.Visible=false
+local ALERT_DIST=40
+local alertBlink=false
+task.spawn(function()while true do alertBlink=not alertBlink task.wait(0.4)end end)
+local function UpdateMusuhAlert()
+    if not s.musuhAlert then alertTxt.Visible=false return end
+    local list=FindMusuh()
+    local nearest,nd=nil,math.huge
+    local myPos=L.Character and L.Character:FindFirstChild("HumanoidRootPart")
+    if not myPos then alertTxt.Visible=false return end
+    for _,o in ipairs(list)do
+        local d=(o.hrp.Position-myPos.Position).Magnitude
+        if d<nd then nd=d nearest=o end
+    end
+    if nearest and nd<ALERT_DIST then
+        alertTxt.Text="⚠ MUSUH DEKAT! "..math.floor(nd).."m ⚠"
+        alertTxt.Color=alertBlink and Color3.fromRGB(255,0,0)or Color3.fromRGB(255,180,0)
+        alertTxt.Position=Vector2.new(Camera.ViewportSize.X/2,80)
+        alertTxt.Visible=true
+    else
+        alertTxt.Visible=false
+    end
+end
+
+-- ==== FREEZE MUSUH ====
+local frozenMusuh={}
+local function UpdateMusuhFreeze()
+    if not s.musuhFreeze then
+        for _,data in pairs(frozenMusuh)do
+            pcall(function()data.hrp.Anchored=false end)
+        end
+        frozenMusuh={}
+        return
+    end
+    local list=FindMusuh()
+    for _,o in ipairs(list)do
+        pcall(function()
+            o.hrp.Anchored=true
+            if o.hum then o.hum.WalkSpeed=0 end
+            frozenMusuh[o.model]=o
+        end)
+    end
+end
+
+-- ==== MUSUH DIRECTION ARROW ====
+local arrowLine1=Drawing.new("Line")arrowLine1.Thickness=3 arrowLine1.Color=Color3.fromRGB(255,80,0)arrowLine1.Visible=false
+local arrowLine2=Drawing.new("Line")arrowLine2.Thickness=3 arrowLine2.Color=Color3.fromRGB(255,80,0)arrowLine2.Visible=false
+local arrowLine3=Drawing.new("Line")arrowLine3.Thickness=3 arrowLine3.Color=Color3.fromRGB(255,80,0)arrowLine3.Visible=false
+local function UpdateMusuhArrow()
+    arrowLine1.Visible=false arrowLine2.Visible=false arrowLine3.Visible=false
+    if not s.musuhArrow then return end
+    local myHRP=L.Character and L.Character:FindFirstChild("HumanoidRootPart")
+    if not myHRP then return end
+    local list=FindMusuh()
+    local nearest,nd=nil,math.huge
+    for _,o in ipairs(list)do
+        local d=(o.hrp.Position-myHRP.Position).Magnitude
+        if d<nd then nd=d nearest=o end
+    end
+    if not nearest then return end
+    local sp,on=W2S(nearest.hrp.Position)
+    local cx=Camera.ViewportSize.X/2
+    local cy=Camera.ViewportSize.Y/2
+    local dx=sp.X-cx local dy=sp.Y-cy
+    local len=math.sqrt(dx*dx+dy*dy)
+    if len<1 then return end
+    local nx=dx/len local ny=dy/len
+    local edge=120
+    local ex=cx+nx*edge local ey=cy+ny*edge
+    if on and len<edge then ex=sp.X ey=sp.Y end
+    arrowLine1.From=Vector2.new(cx+nx*(edge-30),cy+ny*(edge-30))
+    arrowLine1.To=Vector2.new(ex,ey)
+    arrowLine1.Visible=true
+    local ang1=math.atan2(ny,nx)+2.5
+    arrowLine2.From=Vector2.new(ex,ey)
+    arrowLine2.To=Vector2.new(ex+math.cos(ang1)*14,ey+math.sin(ang1)*14)
+    arrowLine2.Visible=true
+    local ang2=math.atan2(ny,nx)-2.5
+    arrowLine3.From=Vector2.new(ex,ey)
+    arrowLine3.To=Vector2.new(ex+math.cos(ang2)*14,ey+math.sin(ang2)*14)
+    arrowLine3.Visible=true
+end
+
+-- ==== MAKANAN ESP ====
+local function UpdateMakananESP()
+    HideAll(makananESPDrawings)
+    if not s.makananESP then return end
+    local items=FindMakanan()
+    for i,obj in ipairs(items)do
+        local pos
+        if obj:IsA("BasePart")then pos=obj.Position
+        elseif obj:IsA("Model")and obj.PrimaryPart then pos=obj.PrimaryPart.Position
+        else continue end
+        local sp,on=W2S(pos)
+        if not on then continue end
+        local k="makan_"..i
+        local dot=GetOrCreate(makananESPDrawings,k.."_dot","Circle")
+        dot.Radius=7 dot.Thickness=2 dot.Filled=true
+        dot.Color=Color3.fromRGB(80,255,80)
+        dot.Position=sp dot.Visible=true
+        local lbl=GetOrCreate(makananESPDrawings,k.."_lbl","Text")
+        local dist=math.floor((pos-Camera.CFrame.Position).Magnitude)
+        lbl.Text=obj.Name.." ("..dist.."m)"
+        lbl.Size=13 lbl.Center=true lbl.Outline=true
+        lbl.Color=Color3.fromRGB(150,255,100)
+        lbl.Position=Vector2.new(sp.X,sp.Y-18)
+        lbl.Visible=true
+    end
+end
+
+-- ==== SARANG ESP ====
+local function UpdateSarangESP()
+    HideAll(sarangESPDrawings)
+    if not s.sarangESP then return end
+    local list=FindSarang()
+    for i,obj in ipairs(list)do
+        local pos
+        if obj:IsA("BasePart")then pos=obj.Position
+        elseif obj:IsA("Model")and obj.PrimaryPart then pos=obj.PrimaryPart.Position
+        else continue end
+        local sp,on=W2S(pos)
+        if not on then continue end
+        local k="sarang_"..i
+        local box=GetOrCreate(sarangESPDrawings,k.."_box","Square")
+        box.Size=Vector2.new(36,36)
+        box.Position=Vector2.new(sp.X-18,sp.Y-18)
+        box.Color=Color3.fromRGB(255,220,0)
+        box.Thickness=2 box.Filled=false box.Visible=true
+        local lbl=GetOrCreate(sarangESPDrawings,k.."_lbl","Text")
+        local dist=math.floor((pos-Camera.CFrame.Position).Magnitude)
+        lbl.Text="[SARANG] "..dist.."m"
+        lbl.Size=13 lbl.Center=true lbl.Outline=true
+        lbl.Color=Color3.fromRGB(255,230,80)
+        lbl.Position=Vector2.new(sp.X,sp.Y-28)
+        lbl.Visible=true
+    end
+end
+
+-- ==== RESOURCE TRACKER ====
+local resourceTxt=Drawing.new("Text")resourceTxt.Size=14 resourceTxt.Outline=true resourceTxt.Color=Color3.fromRGB(150,255,150)resourceTxt.Visible=false
+local function UpdateResourceTracker()
+    if not s.resourceTracker then resourceTxt.Visible=false return end
+    local items=FindMakanan()
+    resourceTxt.Text="MAKANAN DI MAP: "..#items
+    resourceTxt.Position=Vector2.new(20,120)
+    resourceTxt.Visible=true
+end
+
+-- ==== DANGER ZONE HUD ====
+local dangerFrame=Drawing.new("Square")
+dangerFrame.Size=Vector2.new(0,0)dangerFrame.Color=Color3.fromRGB(255,0,0)dangerFrame.Filled=true dangerFrame.Visible=false
+local dangerBlink=false
+task.spawn(function()while true do dangerBlink=not dangerBlink task.wait(0.3)end end)
+local function UpdateDangerZone()
+    if not s.dangerZone then dangerFrame.Visible=false return end
+    local myHRP=L.Character and L.Character:FindFirstChild("HumanoidRootPart")
+    if not myHRP then dangerFrame.Visible=false return end
+    local list=FindMusuh()
+    local nd=math.huge
+    for _,o in ipairs(list)do
+        local d=(o.hrp.Position-myHRP.Position).Magnitude
+        if d<nd then nd=d end
+    end
+    if nd<25 and dangerBlink then
+        dangerFrame.Size=Vector2.new(Camera.ViewportSize.X,Camera.ViewportSize.Y)
+        dangerFrame.Position=Vector2.new(0,0)
+        dangerFrame.Transparency=0.75
+        dangerFrame.Visible=true
+    else
+        dangerFrame.Visible=false
+    end
+end
+
+-- ==== NOCLIP ====
+local noclipConn=nil
+local function ApplyNoclip(state)
+    if noclipConn then noclipConn:Disconnect()noclipConn=nil end
+    if not state then
+        local char=L.Character
+        if char then for _,p in ipairs(char:GetDescendants())do if p:IsA("BasePart")then pcall(function()p.CanCollide=true end)end end end
+        return
+    end
+    noclipConn=R.Stepped:Connect(function()
+        local char=L.Character
+        if not char then return end
+        for _,p in ipairs(char:GetDescendants())do
+            if p:IsA("BasePart")then pcall(function()p.CanCollide=false end)end
+        end
+    end)
+end
+
+-- ==== SPEED ====
+local BASE_SPEED=16 local HACK_SPEED=60
+local function ApplySpeed(state)
+    local char=L.Character
+    if not char then return end
+    local hum=char:FindFirstChildOfClass("Humanoid")
+    if not hum then return end
+    hum.WalkSpeed=state and HACK_SPEED or BASE_SPEED
+end
+
+-- ==== GOD MODE ====
+local godConn=nil
+local function UpdateGodMode()
+    if not s.godMode then
+        if godConn then godConn:Disconnect()godConn=nil end
+        return
+    end
+    if godConn then return end
+    godConn=R.Heartbeat:Connect(function()
+        local char=L.Character
+        if not char then return end
+        local hum=char:FindFirstChildOfClass("Humanoid")
+        if hum then
+            pcall(function()hum.Health=hum.MaxHealth end)
+        end
+    end)
+end
+
+-- ==== INFINITE RESOURCE ====
+local resourceConn=nil
+local function UpdateInfiniteResource()
+    if not s.infiniteResource then
+        if resourceConn then resourceConn:Disconnect()resourceConn=nil end
+        return
+    end
+    if resourceConn then return end
+    resourceConn=R.Heartbeat:Connect(function()
+        pcall(function()
+            local gui=L.PlayerGui or L:WaitForChild("PlayerGui")
+            for _,v in ipairs(gui:GetDescendants())do
+                if v:IsA("TextLabel")or v:IsA("TextBox")then
+                    local t=v.Text:lower()
+                    if t:find("resource")or t:find("food")or t:find("makanan")or t:find("sugar")or t:find("collected")then
+                        -- freeze via remote fire jika ada leaderstats
+                    end
+                end
+            end
+            -- coba freeze leaderstats resource
+            local ls=L:FindFirstChild("leaderstats")
+            if ls then
+                for _,stat in ipairs(ls:GetChildren())do
+                    local n=stat.Name:lower()
+                    if n:find("food")or n:find("resource")or n:find("makanan")or n:find("sugar")or n:find("collect")then
+                        pcall(function()stat.Value=stat.Value+5 end)
+                    end
+                end
+            end
+        end)
+    end)
+end
+
+-- ==== AUTO PROXIMITY PROMPT ====
+local autoProxConn=nil
+local function UpdateAutoProximity()
+    if not s.autoProximity then
+        if autoProxConn then autoProxConn:Disconnect()autoProxConn=nil end
+        return
+    end
+    if autoProxConn then return end
+    autoProxConn=R.Heartbeat:Connect(function()
+        local myHRP=L.Character and L.Character:FindFirstChild("HumanoidRootPart")
+        if not myHRP then return end
+        for _,pp in ipairs(workspace:GetDescendants())do
+            if pp:IsA("ProximityPrompt")and pp.Enabled then
+                local part=pp.Parent
+                local pos=nil
+                if part:IsA("BasePart")then pos=part.Position
+                elseif part:IsA("Model")and part.PrimaryPart then pos=part.PrimaryPart.Position end
+                if pos and (pos-myHRP.Position).Magnitude<=pp.MaxActivationDistance then
+                    pcall(function()
+                        fireproximityprompt(pp)
+                    end)
+                end
+            end
+        end
+    end)
+end
+
+-- ==== AUTO COLLECT MAKANAN ====
+local autoCollectRunning=false
+local collectStatusTxt=Drawing.new("Text")collectStatusTxt.Size=14 collectStatusTxt.Outline=true collectStatusTxt.Color=Color3.fromRGB(0,220,255)collectStatusTxt.Visible=false
+local collectCount=0
+
+local function StopAutoCollect()
+    autoCollectRunning=false
+    collectStatusTxt.Visible=false
+    notify("AUTO COLLECT","Selesai / dihentikan ("..collectCount.." makanan)")
+end
+
+local function GetCollectableFood()
+    local list={}
+    for _,obj in ipairs(workspace:GetDescendants())do
+        local n=obj.Name:lower()
+        for _,kw in ipairs(MAKANAN_KEYWORDS)do
+            if n:find(kw)then
+                local part=nil
+                if obj:IsA("BasePart")then part=obj
+                elseif obj:IsA("Model")then part=obj.PrimaryPart or obj:FindFirstChildOfClass("BasePart")end
+                if part then table.insert(list,{obj=obj,part=part,name=obj.Name})break end
+            end
+        end
+    end
+    return list
+end
+
+local function StartAutoCollect()
+    if autoCollectRunning then StopAutoCollect()return end
+    local char=L.Character
+    if not char then notify("AUTO COLLECT","Karakter tidak ditemukan")return end
+    local hrp=char:FindFirstChild("HumanoidRootPart")
+    if not hrp then notify("AUTO COLLECT","HumanoidRootPart tidak ada")return end
+
+    autoCollectRunning=true
+    collectCount=0
+    notify("AUTO COLLECT","Mulai ngambil semua makanan...")
+
+    task.spawn(function()
+        while autoCollectRunning do
+            local char2=L.Character
+            local hrp2=char2 and char2:FindFirstChild("HumanoidRootPart")
+            if not hrp2 then task.wait(0.5)continue end
+
+            local foods=GetCollectableFood()
+            if #foods==0 then
+                collectStatusTxt.Visible=false
+                notify("AUTO COLLECT","Semua makanan habis! Total: "..collectCount)
+                StopAutoCollect()
+                break
+            end
+
+            -- nearest food
+            local nearest=nil local nd=math.huge
+            for _,k in ipairs(foods)do
+                local ok,d=pcall(function()return(k.part.Position-hrp2.Position).Magnitude end)
+                if ok and d<nd then nd=d nearest=k end
+            end
+            if not nearest then task.wait(0.3)continue end
+
+            collectStatusTxt.Text="[AUTO COLLECT] → "..nearest.name.." | Sisa: "..#foods
+            collectStatusTxt.Position=Vector2.new(Camera.ViewportSize.X/2,Camera.ViewportSize.Y-50)
+            collectStatusTxt.Center=true
+            collectStatusTxt.Visible=true
+
+            -- teleport ke makanan
+            pcall(function()
+                hrp2.CFrame=CFrame.new(nearest.part.Position+Vector3.new(0,2.5,0))
+            end)
+
+            -- coba fireproximityprompt kalau ada
+            pcall(function()
+                local pp=nearest.obj:FindFirstChildOfClass("ProximityPrompt")
+                    or nearest.part:FindFirstChildOfClass("ProximityPrompt")
+                if pp then fireproximityprompt(pp)end
+            end)
+
+            -- tunggu item hilang max 3 detik
+            local waited=0
+            while waited<3 and autoCollectRunning do
+                local gone=false
+                pcall(function()
+                    local p=nearest.obj.Parent
+                    if p==nil then gone=true end
+                end)
+                if gone or not nearest.obj.Parent then
+                    collectCount=collectCount+1
+                    notify("COLLECTED","✓ "..nearest.name.." ("..collectCount..")")
+                    break
+                end
+                task.wait(0.1)
+                waited=waited+0.1
+            end
+
+            task.wait(0.3)
+        end
+        collectStatusTxt.Visible=false
+    end)
+end
+
+-- ==== UI HELPERS ====
+local function MakeBtn(t,cat)
+    local b=Instance.new("TextButton")
+    b.Size=UDim2.new(0,142,0,54)
+    b.BackgroundColor3=Color3.fromRGB(16,22,34)
+    b.TextColor3=Color3.fromRGB(180,220,255)
+    b.Font=Enum.Font.GothamBold b.TextSize=11 b.Text=t b.TextWrapped=true b.BorderSizePixel=0 b.AutoButtonColor=false b.ClipsDescendants=true
+    local u=Instance.new("UICorner",b)u.CornerRadius=UDim.new(0,10)
+    local st=Instance.new("UIStroke",b)st.Color=Color3.fromRGB(0,120,255)st.Thickness=1 st.Transparency=0.6
+    local dot=Instance.new("Frame",b)dot.Size=UDim2.new(0,6,0,6)dot.Position=UDim2.new(0,8,0,8)dot.BackgroundColor3=Color3.fromRGB(0,150,255)dot.BorderSizePixel=0
+    local dc=Instance.new("UICorner",dot)dc.CornerRadius=UDim.new(1,0)dot.ZIndex=2
+    b.MouseEnter:Connect(function()T:Create(b,TweenInfo.new(0.15),{BackgroundColor3=Color3.fromRGB(24,44,72),TextColor3=Color3.fromRGB(255,255,255)}):Play()T:Create(st,TweenInfo.new(0.15),{Color=Color3.fromRGB(0,255,255),Transparency=0}):Play()end)
+    b.MouseLeave:Connect(function()local isOn=buttons[b]and buttons[b].on T:Create(b,TweenInfo.new(0.15),{BackgroundColor3=isOn and Color3.fromRGB(16,60,44)or Color3.fromRGB(16,22,34),TextColor3=Color3.fromRGB(180,220,255)}):Play()T:Create(st,TweenInfo.new(0.15),{Color=isOn and Color3.fromRGB(0,255,150)or Color3.fromRGB(0,120,255),Transparency=isOn and 0 or 0.6}):Play()end)
+    b.Parent=Sc
+    buttons[b]={on=false,dot=dot,s=st,baseText=t,cat=cat or "MISC"}
+    return b
+end
+
+local function TG(b,o,t)
+    b.Text=t..(o and "\n[ON]" or "\n[OFF]")
+    local d=buttons[b]
+    if d then
+        d.on=o d.baseText=t
+        T:Create(b,TweenInfo.new(0.2),{BackgroundColor3=o and Color3.fromRGB(16,60,44)or Color3.fromRGB(16,22,34)}):Play()
+        T:Create(d.s,TweenInfo.new(0.2),{Color=o and Color3.fromRGB(0,255,150)or Color3.fromRGB(0,120,255),Transparency=o and 0 or 0.6}):Play()
+        T:Create(d.dot,TweenInfo.new(0.2),{BackgroundColor3=o and Color3.fromRGB(0,255,150)or Color3.fromRGB(0,150,255)}):Play()
+    end
+end
+
+local function layout()
+    local q=SBi.Text:lower()
+    local vis={}
+    for b,d in pairs(buttons)do
+        local matchQ=(q=="" or string.find(d.baseText:lower(),q,1,true))
+        local matchC=(currentCat=="ALL" or d.cat==currentCat)
+        b.Visible=matchQ and matchC
+        if b.Visible then table.insert(vis,b)end
+    end
+    local x,y=0,0
+    for _,b in ipairs(vis)do
+        b.Position=UDim2.new(0,x,0,y)
+        x=x+148
+        if x>=440 then x=0 y=y+60 end
+    end
+    Sc.CanvasSize=UDim2.new(0,0,0,y+70)
+end
+
+local function makeCat(name)
+    local b=Instance.new("TextButton")
+    b.Size=UDim2.new(0,70,1,0)
+    b.BackgroundColor3=Color3.fromRGB(16,22,34)
+    b.TextColor3=Color3.fromRGB(140,180,220)
+    b.Font=Enum.Font.GothamBold b.TextSize=10 b.Text=name b.AutoButtonColor=false
+    local u=Instance.new("UICorner",b)u.CornerRadius=UDim.new(0,8)
+    local st=Instance.new("UIStroke",b)st.Color=Color3.fromRGB(0,120,255)st.Thickness=1 st.Transparency=0.7
+    if name=="ALL" then
+        b.BackgroundColor3=Color3.fromRGB(0,150,255)
+        b.TextColor3=Color3.fromRGB(255,255,255)
+        st.Transparency=0
+    end
+    b.MouseButton1Click:Connect(function()
+        currentCat=name
+        for _,cb in pairs(cats)do
+            local act=(cb==b)
+            T:Create(cb,TweenInfo.new(0.15),{BackgroundColor3=act and Color3.fromRGB(0,150,255)or Color3.fromRGB(16,22,34),TextColor3=act and Color3.fromRGB(255,255,255)or Color3.fromRGB(140,180,220)}):Play()
+            local cs=cb:FindFirstChildOfClass("UIStroke")
+            if cs then T:Create(cs,TweenInfo.new(0.15),{Transparency=act and 0 or 0.7}):Play()end
+        end
+        layout()
+    end)
+    b.Parent=catBar
+    table.insert(cats,b)
+    return b
+end
+
+local function OpenMenu()
+    if os.time()-ST>EXP then SG:SetCore("SendNotification",{Title="EXPIRED!",Text="Hubungi "..ADM,Duration=5})return end
+    F.Visible=true F.Size=UDim2.new(0,0,0,0)F.Position=UDim2.new(0.5,0,0.5,0)
+    T:Create(F,TweenInfo.new(0.35,Enum.EasingStyle.Back,Enum.EasingDirection.Out),{Size=UDim2.new(0,480,0,380),Position=UDim2.new(0.5,-240,0.5,-190)}):Play()
+end
+
+M.MouseButton1Click:Connect(function()T:Create(F,TweenInfo.new(0.25,Enum.EasingStyle.Back),{Size=UDim2.new(0,0,0,0)}):Play()task.wait(0.25)F.Visible=false F.Size=UDim2.new(0,480,0,380)F.Position=UDim2.new(0.5,-240,0.5,-190)Fl.Visible=true end)
+Fl.MouseButton1Click:Connect(function()Fl.Visible=false OpenMenu()end)
+
+-- ==== BUAT TOMBOL ====
+local B_musuhESP=MakeBtn("Musuh ESP","MUSUH")
+local B_musuhAlert=MakeBtn("Musuh Alert\nJarak","MUSUH")
+local B_musuhFreeze=MakeBtn("Freeze Musuh","MUSUH")
+local B_musuhArrow=MakeBtn("Musuh Direction\nArrow","MUSUH")
+local B_makananESP=MakeBtn("Makanan ESP\n(Nama+Jarak)","KOLONI")
+local B_sarangESP=MakeBtn("Sarang/Base ESP","KOLONI")
+local B_resourceTracker=MakeBtn("Resource\nTracker","KOLONI")
+local B_dangerZone=MakeBtn("Danger Zone\nHUD","KOLONI")
+local B_noclip=MakeBtn("Noclip","GERAK")
+local B_speedUp=MakeBtn("Speed Hack ON","GERAK")
+local B_speedDown=MakeBtn("Speed Normal","GERAK")
+local B_godMode=MakeBtn("God Mode","MISC")
+local B_infiniteRes=MakeBtn("Infinite\nResource","MISC")
+local B_autoProx=MakeBtn("Auto Proximity\nPrompt","MISC")
+local B_autoCollect=MakeBtn("Auto Collect\nMakanan","MISC")
+
+makeCat("ALL")makeCat("MUSUH")makeCat("KOLONI")makeCat("GERAK")makeCat("MISC")
+layout()
+SBi:GetPropertyChangedSignal("Text"):Connect(layout)
+
+-- ==== HANDLER ====
+B_musuhESP.MouseButton1Click:Connect(function()s.musuhESP=not s.musuhESP TG(B_musuhESP,s.musuhESP,"Musuh ESP")end)
+B_musuhAlert.MouseButton1Click:Connect(function()s.musuhAlert=not s.musuhAlert TG(B_musuhAlert,s.musuhAlert,"Musuh Alert\nJarak")end)
+B_musuhFreeze.MouseButton1Click:Connect(function()s.musuhFreeze=not s.musuhFreeze TG(B_musuhFreeze,s.musuhFreeze,"Freeze Musuh")notify("FREEZE",s.musuhFreeze and "Musuh dibekukan!" or "Musuh dibebaskan")end)
+B_musuhArrow.MouseButton1Click:Connect(function()s.musuhArrow=not s.musuhArrow TG(B_musuhArrow,s.musuhArrow,"Musuh Direction\nArrow")end)
+B_makananESP.MouseButton1Click:Connect(function()s.makananESP=not s.makananESP TG(B_makananESP,s.makananESP,"Makanan ESP\n(Nama+Jarak)")end)
+B_sarangESP.MouseButton1Click:Connect(function()s.sarangESP=not s.sarangESP TG(B_sarangESP,s.sarangESP,"Sarang/Base ESP")end)
+B_resourceTracker.MouseButton1Click:Connect(function()s.resourceTracker=not s.resourceTracker TG(B_resourceTracker,s.resourceTracker,"Resource\nTracker")end)
+B_dangerZone.MouseButton1Click:Connect(function()s.dangerZone=not s.dangerZone TG(B_dangerZone,s.dangerZone,"Danger Zone\nHUD")end)
+B_noclip.MouseButton1Click:Connect(function()s.noclip=not s.noclip TG(B_noclip,s.noclip,"Noclip")ApplyNoclip(s.noclip)notify("NOCLIP",s.noclip and "Noclip aktif" or "Noclip nonaktif")end)
+B_speedUp.MouseButton1Click:Connect(function()s.speedHack=true TG(B_speedUp,true,"Speed Hack ON")ApplySpeed(true)notify("SPEED","Speed hack aktif!")end)
+B_speedDown.MouseButton1Click:Connect(function()s.speedHack=false TG(B_speedUp,false,"Speed Hack ON")ApplySpeed(false)notify("SPEED","Speed normal")end)
+B_godMode.MouseButton1Click:Connect(function()s.godMode=not s.godMode TG(B_godMode,s.godMode,"God Mode")UpdateGodMode()notify("GOD MODE",s.godMode and "Aktif! HP selalu penuh" or "Nonaktif")end)
+B_infiniteRes.MouseButton1Click:Connect(function()s.infiniteResource=not s.infiniteResource TG(B_infiniteRes,s.infiniteResource,"Infinite\nResource")UpdateInfiniteResource()notify("INFINITE RES",s.infiniteResource and "Aktif!" or "Nonaktif")end)
+B_autoProx.MouseButton1Click:Connect(function()s.autoProximity=not s.autoProximity TG(B_autoProx,s.autoProximity,"Auto Proximity\nPrompt")UpdateAutoProximity()notify("AUTO PROX",s.autoProximity and "Aktif!" or "Nonaktif")end)
+B_autoCollect.MouseButton1Click:Connect(function()
+    if autoCollectRunning then
+        StopAutoCollect()
+        TG(B_autoCollect,false,"Auto Collect\nMakanan")
+    else
+        StartAutoCollect()
+        TG(B_autoCollect,true,"Auto Collect\nMakanan")
+    end
+end)
+
+-- ==== CHARACTER EVENTS ====
+L.CharacterAdded:Connect(function()
+    task.wait(1)
+    if s.speedHack then ApplySpeed(true)end
+    if s.noclip then ApplyNoclip(true)end
+    if s.godMode then godConn=nil UpdateGodMode()end
+end)
+
+-- ==== MAIN LOOP ====
+R.RenderStepped:Connect(function()
+    UpdateMusuhESP()
+    UpdateMusuhAlert()
+    UpdateMusuhFreeze()
+    UpdateMusuhArrow()
+    UpdateMakananESP()
+    UpdateSarangESP()
+    UpdateResourceTracker()
+    UpdateDangerZone()
+end)
+
+notify("RAPZ MOD","OVULASI SEMUT loaded! Tekan tombol R untuk buka menu.")
